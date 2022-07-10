@@ -8,18 +8,19 @@ class Solution:
         hf_sz = int(len(nums)/2)
         L, R = nums[:hf_sz], nums[hf_sz:]
         
-        if R and target>R[0]:
-            ans_R = self.search(R,target)
-            if ans_R>=0:
-                return (hf_sz + ans_R if len(R)>1 else -1)
+        if target>R[0]:
+            ans = self.search(R,target)
+            print(ans)
+            if ans>=0:
+                return (hf_sz + ans if len(R)>1 else -1)
             else:
                 return -1
-        elif L and target<L[-1]:
+        elif target<L[-1]:
             return (self.search(L, target) if len(L)>1 else -1)
         else:
-            if L and target==L[-1]:
+            if target==L[-1]:
                 return hf_sz-1
-            elif R and target==R[0]:
+            elif target==R[0]:
                 return hf_sz
             else:
                 return -1
