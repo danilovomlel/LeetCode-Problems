@@ -9,8 +9,9 @@ class Solution:
         L, R = nums[:hf_sz], nums[hf_sz:]
         
         if R and target>R[0]:
-            if self.search(R,target)>=0:
-                return (hf_sz + self.search(R, target) if len(R)>1 else -1)
+            ans_R = self.search(R,target)
+            if ans_R>=0:
+                return (hf_sz + ans_R if len(R)>1 else -1)
             else:
                 return -1
         elif L and target<L[-1]:
